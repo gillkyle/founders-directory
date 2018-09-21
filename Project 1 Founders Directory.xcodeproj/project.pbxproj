@@ -14,6 +14,10 @@
 		273BF4FE21553E2500AA4B3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 273BF4FC21553E2500AA4B3E /* LaunchScreen.storyboard */; };
 		273BF50921553E2500AA4B3E /* Project_1_Founders_DirectoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF50821553E2500AA4B3E /* Project_1_Founders_DirectoryTests.swift */; };
 		273BF51421553E2500AA4B3E /* Project_1_Founders_DirectoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF51321553E2500AA4B3E /* Project_1_Founders_DirectoryUITests.swift */; };
+		273BF526215545A500AA4B3E /* DirectoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF525215545A500AA4B3E /* DirectoryViewController.swift */; };
+		273BF528215546C000AA4B3E /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF527215546C000AA4B3E /* Contact.swift */; };
+		273BF52A215546E600AA4B3E /* ContactDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF529215546E600AA4B3E /* ContactDeck.swift */; };
+		273BF52D2155520700AA4B3E /* ContactDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273BF52C2155520700AA4B3E /* ContactDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		273BF50F21553E2500AA4B3E /* Project 1 Founders DirectoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Project 1 Founders DirectoryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		273BF51321553E2500AA4B3E /* Project_1_Founders_DirectoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project_1_Founders_DirectoryUITests.swift; sourceTree = "<group>"; };
 		273BF51521553E2500AA4B3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		273BF525215545A500AA4B3E /* DirectoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryViewController.swift; sourceTree = "<group>"; };
+		273BF527215546C000AA4B3E /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		273BF529215546E600AA4B3E /* ContactDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDeck.swift; sourceTree = "<group>"; };
+		273BF52C2155520700AA4B3E /* ContactDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,10 @@
 		273BF4F221553E2400AA4B3E /* Project 1 Founders Directory */ = {
 			isa = PBXGroup;
 			children = (
-				273BF4F321553E2400AA4B3E /* AppDelegate.swift */,
-				273BF4F521553E2400AA4B3E /* ViewController.swift */,
-				273BF4F721553E2400AA4B3E /* Main.storyboard */,
-				273BF4FA21553E2500AA4B3E /* Assets.xcassets */,
-				273BF4FC21553E2500AA4B3E /* LaunchScreen.storyboard */,
-				273BF4FF21553E2500AA4B3E /* Info.plist */,
+				273BF52B21554EC000AA4B3E /* Supporting Files */,
+				273BF52221553E9000AA4B3E /* Model */,
+				273BF52321553E9600AA4B3E /* View */,
+				273BF52421553E9A00AA4B3E /* Controller */,
 			);
 			path = "Project 1 Founders Directory";
 			sourceTree = "<group>";
@@ -123,6 +129,44 @@
 				273BF51521553E2500AA4B3E /* Info.plist */,
 			);
 			path = "Project 1 Founders DirectoryUITests";
+			sourceTree = "<group>";
+		};
+		273BF52221553E9000AA4B3E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				273BF527215546C000AA4B3E /* Contact.swift */,
+				273BF529215546E600AA4B3E /* ContactDeck.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		273BF52321553E9600AA4B3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				273BF4F721553E2400AA4B3E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		273BF52421553E9A00AA4B3E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				273BF4F521553E2400AA4B3E /* ViewController.swift */,
+				273BF525215545A500AA4B3E /* DirectoryViewController.swift */,
+				273BF52C2155520700AA4B3E /* ContactDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		273BF52B21554EC000AA4B3E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				273BF4FF21553E2500AA4B3E /* Info.plist */,
+				273BF4F321553E2400AA4B3E /* AppDelegate.swift */,
+				273BF4FA21553E2500AA4B3E /* Assets.xcassets */,
+				273BF4FC21553E2500AA4B3E /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +300,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273BF528215546C000AA4B3E /* Contact.swift in Sources */,
 				273BF4F621553E2400AA4B3E /* ViewController.swift in Sources */,
+				273BF52D2155520700AA4B3E /* ContactDetailsViewController.swift in Sources */,
+				273BF52A215546E600AA4B3E /* ContactDeck.swift in Sources */,
 				273BF4F421553E2400AA4B3E /* AppDelegate.swift in Sources */,
+				273BF526215545A500AA4B3E /* DirectoryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
