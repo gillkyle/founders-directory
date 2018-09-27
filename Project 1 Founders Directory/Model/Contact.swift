@@ -17,11 +17,12 @@ class Contact {
     var emailUnlisted: Bool
     var spouseName: String?
     var businessProfile: String
+    var photoUrl: String?
     // optional data
     // var yearJoined: Date
     // var status: StatusEnum
     
-    init(name: String, companyName: String, phone: Int, phoneUnlisted: Bool, email: String, emailUnlisted: Bool, spouseName: String, businessProfile: String) {
+    init(name: String, companyName: String, phone: Int, phoneUnlisted: Bool, email: String, emailUnlisted: Bool, spouseName: String, businessProfile: String, photoUrl: String) {
         self.name = name
         self.companyName = companyName
         self.phone = phone
@@ -30,6 +31,7 @@ class Contact {
         self.emailUnlisted = emailUnlisted
         self.spouseName = spouseName
         self.businessProfile = businessProfile
+        self.photoUrl = photoUrl
     }
     
     

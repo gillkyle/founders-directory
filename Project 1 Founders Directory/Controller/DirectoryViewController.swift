@@ -18,6 +18,17 @@ class DirectoryViewController : UITableViewController {
     // Properties
     var selectedContact: Contact?
     
+    // Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navVC = segue.destination as? UINavigationController {
+            if let detailVC = navVC.viewControllers.first as? ContactDetailsViewController {
+                if let indexPath = sender as? IndexPath {
+                    detailVC.founder = ContactDeck.sharedInstance.contacts[indexPath.row]
+                }
+            }
+        }
+    }
+    
     // Table View Data Source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.ContactCellIdentifier, for: indexPath)
@@ -35,6 +46,6 @@ class DirectoryViewController : UITableViewController {
     // Table View Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedContact = ContactDeck.sharedInstance.contacts[indexPath.row]
-        performSegue(withIdentifier: Storyboard.ShowContactSegueIdentifier, sender: self)
+        performSegue(withIdentifier: Storyboard.ShowContactSegueIdentifier, sender: indexPath)
     }
 }
