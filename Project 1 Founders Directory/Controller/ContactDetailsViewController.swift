@@ -12,39 +12,62 @@ class ContactDetailsViewController : UITableViewController {
     
     var founder: Contact?
     
+    // View Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        updateUI()
+    }
+    
     // Outlets
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var companyLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var spouseLabel: UILabel!
     
     // UI Helper Functions
     private func updateUI() {
         if let selectedContact = founder {
-//            displayImage(selectedContact)
+            displayImage(selectedContact)
             
             nameLabel.text = "\(selectedContact.name)"
+            companyLabel.text = "\(selectedContact.companyName)"
+            phoneLabel.text = "\(selectedContact.phone)"
+            emailLabel.text = "\(selectedContact.email)"
+            descriptionLabel.text = "\(selectedContact.businessProfile)"
+            spouseLabel.text = "\(selectedContact.spouseName ?? "N/A")"
         }
     }
     
-//    private func displayImage(_ president: President) {
-//
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            if let imageUrl = URL(string: "\(Presidents.BaseUrl)\(president.thumbnailUrl)") {
-//                let imageData = try? Data(contentsOf: imageUrl)
-//
-//                DispatchQueue.main.async {
-//                    if let loadedImageData = imageData {
-//                        self.imageView.image = UIImage(data: loadedImageData)
-//                    }
-//                }
-//            }
-//        }
-//    }
-    
-    // Actions
-    @IBAction func showContactDetails(_ segue: UIStoryboardSegue) {
-        updateUI()
+    private func displayImage(_ founder: Contact) {
+        if let imageUrl = UIImage(named: "\(founder.photoUrl ?? "unknown.png")") {
+                self.imageView.image = imageUrl
+        }
     }
     
-    @IBAction func exitDetailsScene(_ segue: UIStoryboardSegue) {
-        navigationController?.popViewController(animated: true)
+    // Actions
+    @IBAction func makeCall(sender: AnyObject) {
+        if let selectedContact = founder {
+            guard let number = URL(string: "tel://\(selectedContact.phone)") else { return }
+            UIApplication.shared.open(number)
+        }
+    }
+    
+    
+    @IBAction func sendText(_ sender: Any) {
+        if let selectedContact = founder {
+            guard let number = URL(string: "tel://\(selectedContact.phone)") else { return }
+            UIApplication.shared.open(number)
+        }
+    }
+    
+    @IBAction func sendEmail(_ sender: Any) {
+        if let selectedContact = founder {
+            guard let email = URL(string: "mailto:\(selectedContact.email)") else { return }
+            UIApplication.shared.open(email, options: [:], completionHandler: nil)
+        }
     }
 }
