@@ -16,6 +16,11 @@ class ContactDetailsViewController : UITableViewController {
     // View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let selectedContact = founder {
+            if selectedContact.name != "Chewie Wookie" {
+                editBtn.title = ""
+            }
+        }
         
         updateUI()
     }
@@ -29,6 +34,7 @@ class ContactDetailsViewController : UITableViewController {
     @IBOutlet weak var descriptionLabel: UITextView!
     @IBOutlet weak var spouseLabel: UILabel!
     
+    @IBOutlet weak var editBtn: UIBarButtonItem!
     // UI Helper Functions
     private func updateUI() {
         if let selectedContact = founder {

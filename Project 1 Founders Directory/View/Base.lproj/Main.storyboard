@@ -78,7 +78,7 @@
                                                     <rect key="frame" x="16" y="11" width="66.666666666666671" height="66"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzU-Bz-rBB">
-                                                    <rect key="frame" x="90" y="49" width="73" height="21"/>
+                                                    <rect key="frame" x="90" y="49" width="269" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -286,6 +286,7 @@
                     <connections>
                         <outlet property="companyLabel" destination="gzU-Bz-rBB" id="2AO-92-J96"/>
                         <outlet property="descriptionLabel" destination="77c-nF-3HL" id="cPp-rJ-5PQ"/>
+                        <outlet property="editBtn" destination="ms5-Ul-dn0" id="LEB-na-l14"/>
                         <outlet property="emailLabel" destination="za3-cq-mYK" id="oGl-NZ-zeM"/>
                         <outlet property="imageView" destination="Ymh-TP-Z8F" id="mww-1p-XWX"/>
                         <outlet property="nameLabel" destination="1Rs-3M-zQz" id="wIj-zm-Fp3"/>
