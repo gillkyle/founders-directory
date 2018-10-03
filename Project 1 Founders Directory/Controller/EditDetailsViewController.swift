@@ -21,6 +21,11 @@ class EditDetailsViewController : UITableViewController {
     
     // Outlets
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var companyNameField: UITextField!
+    @IBOutlet weak var phoneLabel: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var descriptionField: UITextView!
+    @IBOutlet weak var spouseField: UITextField!
     
     
     // UI Helper Functions
@@ -29,15 +34,11 @@ class EditDetailsViewController : UITableViewController {
 //            displayImage(selectedContact)
 
             nameField.text = "\(selectedContact.name)"
-//            companyLabel.text = "\(selectedContact.companyName)"
-//            phoneLabel.text = "\(selectedContact.phone)"
-//            emailLabel.text = "\(selectedContact.email)"
-//            descriptionLabel.text = "\(selectedContact.businessProfile)"
-//            spouseLabel.text = "\(selectedContact.spouseName ?? "N/A")"
+            companyNameField.text = "\(selectedContact.companyName)"
+            phoneLabel.text = "\(selectedContact.phone)"
+            emailField.text = "\(selectedContact.email)"
+            descriptionField.text = "\(selectedContact.businessProfile)"
+            spouseField.text = "\(selectedContact.spouseName ?? "N/A")"
         }
-    }
-    
-    @IBAction func showEdit(_ sender: Any) {
-        print(sender)
     }
 }
