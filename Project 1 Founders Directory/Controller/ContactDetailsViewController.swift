@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class ContactDetailsViewController : UITableViewController {
     
@@ -59,8 +60,10 @@ class ContactDetailsViewController : UITableViewController {
     
     @IBAction func sendText(_ sender: Any) {
         if let selectedContact = founder {
-            guard let number = URL(string: "tel://\(selectedContact.phone)") else { return }
-            UIApplication.shared.open(number)
+            if MFMessageComposeViewController.canSendText() {
+                let messageComposeViewController = MFMessageComposeViewController()
+                present(messageComposeViewController, animated: true, completion: nil)
+            }
         }
     }
     
