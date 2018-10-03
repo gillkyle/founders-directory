@@ -8,18 +8,23 @@
 
 import UIKit
 
-class EditDetailsViewController : UITableViewController {
+class EditDetailsViewController : UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // Properties
     var founder: Contact?
+    let imagePicker = UIImagePickerController()
 
     // View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
 
         updateUI()
     }
     
     // Outlets
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var companyNameField: UITextField!
     @IBOutlet weak var phoneLabel: UITextField!
@@ -31,7 +36,7 @@ class EditDetailsViewController : UITableViewController {
     // UI Helper Functions
     private func updateUI() {
         if let selectedContact = founder {
-//            displayImage(selectedContact)
+            displayImage(selectedContact)
 
             nameField.text = "\(selectedContact.name)"
             companyNameField.text = "\(selectedContact.companyName)"
@@ -40,5 +45,42 @@ class EditDetailsViewController : UITableViewController {
             descriptionField.text = "\(selectedContact.businessProfile)"
             spouseField.text = "\(selectedContact.spouseName ?? "N/A")"
         }
+    }
+    
+    private func displayImage(_ founder: Contact) {
+        if let imageUrl = UIImage(named: "\(founder.photoUrl ?? "unknown.png")") {
+            self.imageView.image = imageUrl
+            self.imageView.applyBorder(width: 1.0)
+            self.imageView.applyCircleMask(radius: 6)
+        }
+    }
+    
+    // Actions
+    @IBAction func uploadImage(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func takePicture(_ sender: UIButton) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = pickedImage
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
