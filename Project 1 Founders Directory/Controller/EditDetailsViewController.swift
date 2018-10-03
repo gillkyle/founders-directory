@@ -18,13 +18,17 @@ class EditDetailsViewController : UITableViewController {
 
         updateUI()
     }
-
+    
+    // Outlets
+    @IBOutlet weak var nameField: UITextField!
+    
+    
     // UI Helper Functions
     private func updateUI() {
         if let selectedContact = founder {
 //            displayImage(selectedContact)
 
-//            nameLabel.text = "\(selectedContact.name)"
+            nameField.text = "\(selectedContact.name)"
 //            companyLabel.text = "\(selectedContact.companyName)"
 //            phoneLabel.text = "\(selectedContact.phone)"
 //            emailLabel.text = "\(selectedContact.email)"

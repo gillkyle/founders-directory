@@ -10,12 +10,19 @@ import UIKit
 import MessageUI
 
 class ContactDetailsViewController : UITableViewController {
+    // Constants
+    private struct Storyboard {
+        static let ShowEditSegueIdentifier = "EditContact"
+    }
     
+    // Properties
     var founder: Contact?
     
     // View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // don't show edit button for users that aren't Chewie
         if let selectedContact = founder {
             if selectedContact.name != "Chewie Wookie" {
                 editBtn.title = ""
@@ -35,6 +42,7 @@ class ContactDetailsViewController : UITableViewController {
     @IBOutlet weak var spouseLabel: UILabel!
     
     @IBOutlet weak var editBtn: UIBarButtonItem!
+    
     // UI Helper Functions
     private func updateUI() {
         if let selectedContact = founder {
@@ -52,6 +60,19 @@ class ContactDetailsViewController : UITableViewController {
     private func displayImage(_ founder: Contact) {
         if let imageUrl = UIImage(named: "\(founder.photoUrl ?? "unknown.png")") {
                 self.imageView.image = imageUrl
+            self.imageView.applyBorder(width: 1.0)
+            self.imageView.applyCircleMask(radius: 6)
+        }
+    }
+    
+    // Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navVC = segue.destination as? UINavigationController {
+            if let editVC = navVC.viewControllers.first as? EditDetailsViewController {
+                if let selectedContact = sender as? Contact {
+                    editVC.founder = selectedContact
+                }
+            }
         }
     }
     
@@ -62,7 +83,6 @@ class ContactDetailsViewController : UITableViewController {
             UIApplication.shared.open(number)
         }
     }
-    
     
     @IBAction func sendText(_ sender: Any) {
         if let selectedContact = founder {
@@ -78,5 +98,12 @@ class ContactDetailsViewController : UITableViewController {
             guard let email = URL(string: "mailto:\(selectedContact.email)") else { return }
             UIApplication.shared.open(email, options: [:], completionHandler: nil)
         }
+    }
+    
+    @IBAction func tapEdit(_ sender: Any) {
+        if let selectedContact = founder {
+            performSegue(withIdentifier: Storyboard.ShowEditSegueIdentifier, sender: selectedContact)
+        }
+        
     }
 }
