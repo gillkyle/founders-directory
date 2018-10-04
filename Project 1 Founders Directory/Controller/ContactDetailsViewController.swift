@@ -50,8 +50,16 @@ class ContactDetailsViewController : UITableViewController {
             
             nameLabel.text = "\(selectedContact.name)"
             companyLabel.text = "\(selectedContact.companyName)"
-            phoneLabel.text = "\(selectedContact.phone)"
-            emailLabel.text = "\(selectedContact.email)"
+            if (selectedContact.phoneUnlisted) {
+                phoneLabel.text = "(unlisted)"
+            } else {
+                phoneLabel.text = "\(selectedContact.phone)"
+            }
+            if (selectedContact.phoneUnlisted) {
+                emailLabel.text = "(unlisted)"
+            } else {
+                emailLabel.text = "\(selectedContact.email)"
+            }
             descriptionLabel.text = "\(selectedContact.businessProfile)"
             spouseLabel.text = "\(selectedContact.spouseName ?? "N/A")"
         }
